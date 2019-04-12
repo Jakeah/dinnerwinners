@@ -4,26 +4,23 @@
     <title>Dinner Winners</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+    <%= render 'layouts/shim' %>
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top navbar">
-        <div class="container">
-          <%= link_to "Dinner Winners", '#', id: "logo" %>
-          <nav>
-            <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "Home",   '#' %></li>
-              <li><%= link_to "Help",   '#' %></li>
-              <li><%= link_to "Log in", '#' %></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-      <div class="container">
+    <%= render 'layouts/header' %>
+    <div class="container">
       <%= yield %>
-      </div>
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
+<script>
+    $('.form-horizontal').validate();
+    $('.form').validate();
+
+</script>

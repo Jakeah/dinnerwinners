@@ -1,0 +1,26 @@
+<div id="login_form_modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <%= form_tag({:controller => 'welcome', :action => 'login'}, :role => 'form', :id => 'login_form') do %>
+        <div class="modal-body">
+          <div class="form-group">
+              <label class=" control-label sr-only" for="email">Email address</label>
+              <%= email_field_tag :email, @user_name, :class => "form-control", :placeholder => "Enter email" %>
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="password">Password</label>
+              <input name="password" type="password" class="form-control" id="password" placeholder="password"/>
+            </div> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= button_to "Login", "/login", {class: 'btn btn-success'} %>
+        </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
