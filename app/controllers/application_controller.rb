@@ -20,7 +20,6 @@ class ApplicationController < ActionController::Base
       session.delete(:is_god_admin)
       session.delete(:is_admin)
     end
-
   end
 
   def clean_session_info
@@ -28,6 +27,7 @@ class ApplicationController < ActionController::Base
     session.delete(:is_god_admin)
     session.delete(:user_id)
     session.delete(:user_name)
+    session.delete(:hide_login)
   end
 
   def send_to_login_page

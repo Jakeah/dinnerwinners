@@ -1,13 +1,13 @@
 <header class="navbar navbar-default">
 <div class="container">
-    <%= link_to "Dinner Winners", '#', id: "logo" %>
+    <%= link_to "Dinner Winners", '/', id: "logo" %>
     <nav>
     <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   '#' %></li>
-        <li><%= link_to "Help",   '#' %></li>
-        <% unless @hide_login %>
-          <li><a href="#" data-toggle="modal" data-target="#login_form_modal" href="#login_form_modal">Login</a></li>
+        <li><%= link_to "Home",   '/' %></li>
+        <% unless session[:hide_login] %>
+          <li><a data-toggle="modal" data-target="#login_form_modal" href="#login_form_modal">Login</a></li>
         <% else %>
+          <li><%= link_to "This Week's Picks", '/current_week' %></li>
           <li><%= link_to "Logout", '/logout/' %></li>
         <% end %>
     </ul>

@@ -18,6 +18,7 @@ class WelcomeController < ApplicationController
         uri = session[:original_uri]
         session[:original_uri] = nil
         Rails.logger.info "REQUESTED URI was #{uri}" unless uri.blank?
+        session[:hide_login] = true
         if user.is_admin
           redirect_to(uri || {action: 'admin_dashboard'})
         else # user.is_organization_admin or location_admin   TODO what about responder
@@ -29,7 +30,7 @@ class WelcomeController < ApplicationController
         end
       else
         if params[:fail_path].blank?
-          @hide_login = true # hides the login in the header
+          session[:hide_login] = true # hides the login in the header
         else
           redirect_to :action => params[:fail_path]
         end
@@ -41,7 +42,7 @@ class WelcomeController < ApplicationController
 
     else # request not a post. get the cookie
       @user_name = params[:email]
-      @hide_login = true # hides the login in the header
+      session[:hide_login] = true # hides the login in the header
 
     end
   end
